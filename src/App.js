@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import HomeScreen from './screens/HomeScreen';
-import DetailsScreen from './screens/DetailsScreen';
-import BasicComponentPage from './screens/BasicReactNativeComponent';
-import ShowPage from './screens/Show';
+import HomeScreen from '@screens/HomeScreen';
+import DetailsScreen from '@screens/DetailsScreen';
+import BasicComponentPage from '@screens/BasicReactNativeComponent';
+import ShowPage from '@screens/Show';
 
 // 基本跳轉
 import { createStackNavigator } from '@react-navigation/stack';
