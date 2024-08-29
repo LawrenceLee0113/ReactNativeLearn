@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 
+
+
+
 export default function BasicComponentPage({ navigation }) {
   // 使用 useState 來管理計數器的狀態
   const [count, setCount] = useState(0);
@@ -12,9 +15,10 @@ export default function BasicComponentPage({ navigation }) {
   const handlePress2 = () => {
     alert('Button Pressed!');
   };
-
   return (
     <ScrollView style={styles.body}>
+      
+      
       {/* <View style={styles.header}></View> */}
 
       {/* 計數器 */}
