@@ -18,6 +18,8 @@ const Tab = createBottomTabNavigator();
 
 import { ThemeProvider } from '@context/ThemeContext';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 // 側邊跳轉
 // import { createDrawerNavigator } from '@react-navigation/drawer';
 // const Drawer = createDrawerNavigator();
@@ -27,14 +29,25 @@ import store from '@store';
 import ReduxPage from '@screens/ReduxPage';
 import { Provider } from 'react-redux';
 
+function HomeStack() {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={HomeScreen} options={{ title: '首頁' }} />
+      <Stack.Screen name="Details" component={DetailsScreen} options={{ title: '轉跳頁面(範例)' }} />
+      <Stack.Screen name="BasicPage" component={BasicComponentPage} options={{ title: '基本元件範例頁面' }} />
+      {/* <Stack.Screen name="ShowPage" component={ShowPage} options={{ title: '參數傳遞範例頁面' }} /> */}
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <ThemeProvider>{/* 這裡是全局變數Context */}
       <Provider store={store}>{/* 這裡是全局變數Redux */}
-      <NavigationContainer>
+        <NavigationContainer>
 
-        {/* 基本的導覽頁跳轉 */}
-        {/* <Stack.Navigator initialRouteName="Home">
+          {/* 基本的導覽頁跳轉 */}
+          {/* <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} options={{ title: '首頁' }}/>
         <Stack.Screen name="Details" component={DetailsScreen} options={{ title: '轉跳頁面(範例)' }}/>
         <Stack.Screen name="Basic" component={BasicComponentPage} options={{ title: '基本元件範例頁面' }}/>
@@ -42,20 +55,29 @@ export default function App() {
       </Stack.Navigator> */}
 
 
-        {/* 下方選單導覽頁跳轉 */}
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} options={{ title: '首頁' }} />
-          <Tab.Screen name="Basic" component={BasicComponentPage} options={{ title: '元件' }} />
-          <Tab.Screen name="ThemeChagePage" component={ThemeChagePage} options={{ title: '全局變數' }} />
-          <Tab.Screen name="FetchPage" component={FetchPage} options={{ title: '獲取API' }} />
-        </Tab.Navigator>
+          {/* 下方選單導覽頁跳轉 */}
+          <Tab.Navigator>
+            {/* <HomeStack /> */}
+            <Tab.Screen name="HomeStack" component={HomeStack}
+              options={{
+                tabBarLabel: 'Home', tabBarIcon: ({ color, size }) => (
+                  <Icon name="home" color={color} size={size} />
+                ),
+                 headerShown: false
+              }}
+            />
+            <Tab.Screen name="Basic" component={BasicComponentPage} options={{ title: '元件' }} />
+            <Tab.Screen name="ThemeChagePage" component={ThemeChagePage} options={{ title: '全局變數' }} />
+            <Tab.Screen name="FetchPage" component={FetchPage} options={{ title: '獲取API' }} />
+          </Tab.Navigator>
 
-        {/* 側邊選單導覽頁跳轉 失敗 */}
-        {/* <Drawer.Navigator initialRouteName="Home">
+
+          {/* 側邊選單導覽頁跳轉 失敗 */}
+          {/* <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="BasicComponentPage" component={BasicComponentPage} />
       </Drawer.Navigator> */}
-      </NavigationContainer>
+        </NavigationContainer>
       </Provider>
     </ThemeProvider>
   );

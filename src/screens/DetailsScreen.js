@@ -7,6 +7,8 @@ export default function DetailsScreen({ navigation }) {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Details Screen</Text>
       <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Go BasicPage" onPress={() => navigation.navigate('BasicPage')} />
+      {/* <Button title="Go BaShowPagesic" onPress={() => navigation.navigate('BaShowPagesic')} /> */}
     </View>
   );
 }

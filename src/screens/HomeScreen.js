@@ -4,8 +4,12 @@ import { Button, View, Text } from 'react-native';
 import { ThemeContext } from '@context/ThemeContext';
 
 
+
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../store/actions/themeActions';
+
+// 基本跳轉
+import { createStackNavigator } from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 
 export default function HomeScreen({ navigation }) {
@@ -22,17 +26,24 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      {/* 基本的導覽頁跳轉 */}
       <Text>{ redux_theme }</Text>
       <Button
-        title="Go to Details"
+        title="Go to FetchPage"
         color={theme.textColor}
-        onPress={() => navigation.navigate('Details')}
+        onPress={() => navigation.navigate('FetchPage')}
       />
       <Button
         title="前往基本元件頁面"
         color={theme.textColor}
         
         onPress={() => navigation.navigate('Basic')}
+      />
+      <Button
+        title="Go to Details"
+        color={theme.textColor}
+        
+        onPress={() => navigation.navigate('Details')}
       />
     </View>
   );
